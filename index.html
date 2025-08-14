@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Khushpreet Singh — AI/ML Engineer portfolio: LLMs, RAG, MLOps, deep learning." />
+  <title>Khushpreet Singh — AI/ML Portfolio</title>
+
+  <!-- Fonts & Tailwind (CDN) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script> window.tailwind = { config: { darkMode: 'class' } } </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- tsParticles for live background -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+  <style>
+    :root {
+      --brand: 99 102 241; /* indigo-500 */
+      --brand-2: 16 185 129; /* emerald-500 */
+    }
+    html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial; }
+    .container { max-width: 1100px; }
+    .card { border-radius: 1rem; box-shadow: 0 10px 30px rgba(2, 6, 23, .08); }
+    .grad { background: linear-gradient(90deg, rgb(var(--brand)) 0%, rgb(var(--brand-2)) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .link { position: relative; }
+    .link::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: rgb(var(--brand)); transition: width .3s ease; }
+    .link:hover::after { width: 100%; }
+
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* particles canvas under everything */
+    #particles { position: fixed; inset: 0; z-index: 0; }
+    main, header, footer { position: relative; z-index: 1; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+  <canvas id="particles"></canvas>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/70 dark:bg-slate-900/70 backdrop-blur border-b border-slate-200/60 dark:border-slate-700/60">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="font-bold tracking-tight text-xl">Khushpreet <span class="text-indigo-500">Singh</span></a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#projects" class="hover:text-indigo-500">Projects</a>
+        <a href="#skills" class="hover:text-indigo-500">Skills</a>
+        <a href="#experience" class="hover:text-indigo-500">Experience</a>
+        <a href="#education" class="hover:text-indigo-500">Education</a>
+        <a href="#certs" class="hover:text-indigo-500">Certifications</a>
+        <a href="#publication" class="hover:text-indigo-500">Publication</a>
+        <a href="#contact" class="hover:text-indigo-500">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="resume.pdf" class="px-3 py-2 rounded-lg border border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800 text-sm">Download Resume</a>
+        <a href="https://github.com/Kalrakhush" target="_blank" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.9 5.33.9 11.6c0 4.88 3.16 9.02 7.55 10.48.55.1.75-.24.75-.53 0-.26-.01-1.13-.02-2.06-3.07.67-3.72-1.3-3.72-1.3-.5-1.27-1.22-1.6-1.22-1.6-.99-.68.08-.67.08-.67 1.1.08 1.69 1.13 1.69 1.13.98 1.68 2.57 1.2 3.2.92.1-.71.38-1.2.7-1.48-2.45-.28-5.02-1.23-5.02-5.47 0-1.2.43-2.18 1.13-2.95-.11-.28-.49-1.43.11-2.98 0 0 .93-.3 3.04 1.13.88-.24 1.81-.36 2.74-.36s1.86.12 2.74.36c2.11-1.43 3.04-1.13 3.04-1.13.6 1.55.22 2.7.11 2.98.7.77 1.13 1.75 1.13 2.95 0 4.25-2.58 5.19-5.04 5.47.39.34.74 1.01.74 2.05 0 1.48-.01 2.68-.01 3.05 0 .29.2.63.76.52 4.38-1.46 7.54-5.6 7.54-10.47C23.1 5.33 18.27.5 12 .5z"/></svg>
+        </a>
+        <a href="https://in.linkedin.com/in/khushpreets016" target="_blank" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9v5.6H9.41V9h3.41v1.57h.05c.47-.9 1.61-1.83 3.31-1.83 3.54 0 4.19 2.33 4.19 5.36v6.35zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.06 0-1.14.92-2.06 2.06-2.06s2.06.92 2.06 2.06c0 1.13-.92 2.06-2.06 2.06zm1.78 13.02H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Toggle theme">
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.78 1.79 1.81-1.79zm10.48 0l1.79-1.79 1.79 1.79-1.79 1.79-1.79-1.79zM12 4V1h-0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16L4.97 21l-1.8-1.84 1.8-1.79 1.79 1.79zM19.03 21l-1.79-1.84 1.79-1.79 1.79 1.79L19.03 21zM12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.64 13a9 9 0 11-10.63-10.6 7 7 0 1010.63 10.6z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="container mx-auto px-4 pt-16 pb-10 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+            Hi, I’m <span class="grad">Khushpreet Singh</span>
+          </h1>
+          <p class="mt-5 text-lg md:text-xl text-slate-600 dark:text-slate-300">
+            AI/ML Engineer focused on <b>LLMs</b>, <b>RAG</b>, <b>Deep Learning</b>, and <b>MLOps</b>. I build production-grade AI that ships.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#projects" class="px-5 py-3 rounded-xl bg-indigo-600 text-white hover:bg-indigo-500">View Projects</a>
+            <a href="mailto:khushpreets016@gmail.com" class="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800">Contact</a>
+          </div>
+          <div class="mt-6 text-sm text-slate-500 dark:text-slate-400">
+            Hyderabad • India • Open to opportunities
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="card p-8 bg-white dark:bg-slate-800">
+            <h3 class="font-semibold text-lg mb-2">Quick Highlights</h3>
+            <ul class="space-y-2 text-slate-600 dark:text-slate-300">
+              <li>⚙️ Reduced inference time by <b>25%</b> via optimization & quantization</li>
+              <li>📈 Improved model accuracy by <b>15%</b> through feature and HP tuning</li>
+              <li>📦 Built RAG systems w/ vector DBs for grounded LLM answers</li>
+              <li>🛠️ MLOps: Dockerized services, CI/CD, robust API deployments</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container mx-auto px-4 py-12 md:py-16">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Projects</h2>
+        <p class="text-slate-600 dark:text-slate-300 mb-8">Impactful AI/ML projects with outcomes & stacks.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold text-xl">AI Document Q&A Chatbot (RAG)</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Query large PDFs (budgets/legal) with grounded answers; used by <b>500+ users</b>.
+          </p>
+          <ul class="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            <li>Stack: Python, LangChain/LlamaIndex, OpenAI API, Pinecone, FastAPI, Streamlit, React, Elasticsearch, Docker</li>
+          </ul>
+          <div class="mt-4 flex gap-3">
+            <a class="link text-indigo-600" href="#" target="_blank">Live Demo</a>
+            <a class="link text-indigo-600" href="https://github.com/Kalrakhush" target="_blank">GitHub</a>
+          </div>
+        </article>
+        <article class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold text-xl">Sentiment Analysis — BERT + QLoRA</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Fine-tuned BERT with QLoRA to boost <b>neutral</b> F1 by <b>+12%</b> and reduce confusion.
+          </p>
+          <ul class="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            <li>Stack: Transformers, PEFT, PyTorch, Datasets, Gradio, W&amp;B</li>
+          </ul>
+          <div class="mt-4 flex gap-3">
+            <a class="link text-indigo-600" href="#" target="_blank">Live Demo</a>
+            <a class="link text-indigo-600" href="https://github.com/Kalrakhush" target="_blank">GitHub</a>
+          </div>
+        </article>
+        <article class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold text-xl">AgriGuide — Crop Recommendation</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Recommends crops via soil/weather features; added disease prediction and insights.
+          </p>
+          <ul class="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            <li>Stack: scikit-learn, Flask, React, Pandas, NumPy</li>
+          </ul>
+          <div class="mt-4 flex gap-3">
+            <a class="link text-indigo-600" href="#" target="_blank">Case Study</a>
+            <a class="link text-indigo-600" href="https://github.com/Kalrakhush" target="_blank">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container mx-auto px-4 py-12 md:py-16">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Skills</h2>
+        <p class="text-slate-600 dark:text-slate-300 mb-8">Hands-on tools for building & shipping AI.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold">Programming & AI</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Python, SQL, Java • PyTorch, TensorFlow, scikit‑learn, NLP, LLMs, RAG</p>
+        </div>
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold">MLOps & Dev</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Docker, Git, CI/CD, FastAPI • Azure</p>
+        </div>
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold">Data & Viz</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Pandas, NumPy, Power BI, Tableau</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="container mx-auto px-4 py-12 md:py-16">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Experience</h2>
+      </div>
+      <div class="space-y-6">
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <h3 class="font-semibold text-xl">AI Engineer — FinAGG Technologies</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400">2025 • India</span>
+          </div>
+          <ul class="mt-3 list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1">
+            <li>Built AI pipelines for financial data; delivered real-time analytics & scoring.</li>
+            <li>Deployed LLM/RAG services with observability and CI/CD.</li>
+          </ul>
+        </div>
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <h3 class="font-semibold text-xl">Associate AI Engineer — DeepForrest AI</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400">2024 – 2025 • Hyderabad</span>
+          </div>
+          <ul class="mt-3 list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1">
+            <li>Optimized ETL and deep learning training/inference; −25% latency, +15% accuracy.</li>
+            <li>Engineered RAG systems with vector databases and APIs.</li>
+          </ul>
+        </div>
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <h3 class="font-semibold text-xl">AIML Intern — CTRLS Datacenters</h3>
+            <span class="text-sm text-slate-500 dark:text-slate-400">2024 • Hyderabad</span>
+          </div>
+          <ul class="mt-3 list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1">
+            <li>Developed transformation pipelines and predictive models for insights.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="container mx-auto px-4 py-12 md:py-16">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Education</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold text-xl">B.Tech — AI & ML (CSE)</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300">CGC Jhanjeri • 2024 • 8.34 CGPA</p>
+        </div>
+        <div class="card bg-white dark:bg-slate-800 p-6 reveal">
+          <h3 class="font-semibold text-xl">Senior Secondary (Non‑Medical)</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Panacea Sr. Sec. Public School • 2019 • 78%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certs" class="container mx-auto px-4 py-12 md:py-16">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Certifications</h2>
+      </div>
+      <ul class="grid md:grid-cols-2 gap-6">
+        <li class="card bg-white dark:bg-slate-800 p-6 reveal">Microsoft Certified: Azure Data Scientist Associate</li>
+        <li class="card bg-white dark:bg-slate-800 p-6 reveal">Google Data Analytics</li>
+        <li class="card bg-white dark:bg-slate-800 p-6 reveal">Machine Learning Specialization — Coursera</li>
+        <li class="card bg-white dark:bg-slate-800 p-6 reveal">Java/Python — HackerRank • ML — Coursera</li>
+      </ul>
+    </section>
+
+    <!-- Publication -->
+    <section id="publication" class="container mx-auto px-4 py-12 md:py-16">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Publication</h2>
+        <div class="card bg-white dark:bg-slate-800 p-6">
+          <h3 class="font-semibold text-xl">The AgriGuide: A Crop Recommendation System</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Led analysis, designed scalable APIs, and integrated end-to-end system components.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container mx-auto px-4 py-12 md:py-16">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Get in touch</h2>
+        <p class="text-slate-600 dark:text-slate-300">Email: <a class="link text-indigo-600" href="mailto:khushpreets016@gmail.com">khushpreets016@gmail.com</a> • Phone: <span class="link">+91 6239550058</span></p>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">GitHub: <a class="link text-indigo-600" href="https://github.com/Kalrakhush" target="_blank">github.com/Kalrakhush</a> • LinkedIn: <a class="link text-indigo-600" href="https://in.linkedin.com/in/khushpreets016" target="_blank">in/khushpreets016</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+    © <span id="year"></span> Khushpreet Singh • Built with ❤️ — AI/ML Portfolio
+  </footer>
+
+  <script>
+    // ---------- Dark Mode Toggle (fixed) ----------
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const sun = document.getElementById('sun');
+    const moon = document.getElementById('moon');
+    const stored = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = stored || (systemPrefersDark ? 'dark' : 'light');
+    if (initialTheme === 'dark') root.classList.add('dark');
+    function syncIcons(){ const isDark = root.classList.contains('dark'); sun.classList.toggle('hidden', !isDark); moon.classList.toggle('hidden', isDark); }
+    syncIcons();
+    themeToggle.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      const isDark = root.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      syncIcons();
+      // update particles instantly on toggle
+      setParticlesTheme(isDark ? 'dark' : 'light');
+    });
+
+    // ---------- Reveal on scroll ----------
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---------- tsParticles Background (theme-aware) ----------
+    const particlesEl = document.getElementById('particles');
+
+    function getParticlesOptions(theme){
+      const isDark = theme === 'dark';
+      return {
+        background: { color: { value: 'transparent' } },
+        fullScreen: { enable: false },
+        fpsLimit: 60,
+        detectRetina: true,
+        particles: {
+          number: { value: 60, density: { enable: true, area: 900 } },
+          color: { value: isDark ? '#a5b4fc' : '#6366f1' },        // indigo variants
+          links: { enable: true, color: isDark ? '#64748b' : '#cbd5e1', distance: 140, opacity: 0.5, width: 1 },
+          move: { enable: true, speed: 1.2, outModes: { default: 'bounce' } },
+          size: { value: { min: 1, max: 3 } },
+          opacity: { value: 0.6 },
+          collisions: { enable: false },
+          shape: { type: 'circle' }
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: 'grab' },
+            onClick: { enable: true, mode: 'push' },
+            resize: true
+          },
+          modes: {
+            grab: { distance: 140, links: { opacity: 0.7 } },
+            push: { quantity: 2 }
+          }
+        }
+      };
+    }
+
+    let currentParticles;
+
+    async function initParticles(theme){
+      const engine = tsParticles;
+      currentParticles = await engine.load(particlesEl, getParticlesOptions(theme));
+    }
+
+    async function setParticlesTheme(theme){
+      if (!currentParticles) return initParticles(theme);
+      await currentParticles.load(getParticlesOptions(theme));
+    }
+
+    // init with correct theme
+    initParticles(initialTheme);
+  </script>
+</body>
+</html>
