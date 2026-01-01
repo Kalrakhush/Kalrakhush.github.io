@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +10,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
 
     <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -59,14 +62,16 @@
             --muted: #f4f4f5;
             --muted-foreground: #71717a;
             --border: #e4e4e7;
-            --accent: #3b82f6; /* Blue */
+            --accent: #3b82f6;
+            /* Blue */
             --radius: 1.5rem;
         }
 
         .dark {
             --background: #09090b;
             --foreground: #fafafa;
-            --card: #18181b; /* Zinc-900 */
+            --card: #18181b;
+            /* Zinc-900 */
             --card-foreground: #fafafa;
             --primary: #fafafa;
             --primary-foreground: #18181b;
@@ -110,7 +115,7 @@
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             cursor: pointer;
         }
-        
+
         .bento-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
@@ -131,9 +136,20 @@
         }
 
         @keyframes pulse-green {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
         }
 
         [contenteditable="true"]:focus {
@@ -217,13 +233,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .close-btn:hover {
             background: var(--accent);
             color: white;
             border-color: var(--accent);
         }
-        
+
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -234,14 +250,107 @@
             transition: color 0.2s;
             cursor: pointer;
         }
-        .back-btn:hover { color: var(--accent); }
 
-        html.lenis { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-        .lenis.lenis-stopped { overflow: hidden; }
+        .back-btn:hover {
+            color: var(--accent);
+        }
+
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        /* Profile Picture Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.4),
+                    0 0 40px rgba(59, 130, 246, 0.2),
+                    0 0 60px rgba(59, 130, 246, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.6),
+                    0 0 50px rgba(59, 130, 246, 0.3),
+                    0 0 80px rgba(59, 130, 246, 0.2);
+            }
+        }
+
+        @keyframes rotate-gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .profile-avatar {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #3b82f6);
+            background-size: 300% 300%;
+            animation: glow-pulse 2s ease-in-out infinite, rotate-gradient 4s ease infinite;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-avatar:hover::before {
+            opacity: 1;
+        }
+
+        .profile-avatar img {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .profile-avatar:hover img {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .dark .profile-avatar::before {
+            background: linear-gradient(45deg, #60a5fa, #a78bfa, #f472b6, #fbbf24, #60a5fa);
+            background-size: 300% 300%;
+        }
     </style>
 </head>
+
 <body class="antialiased selection:bg-accent selection:text-white">
 
     <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
@@ -258,12 +367,15 @@
     </div>
 
     <!-- LEFT SIDEBAR -->
-    <aside class="fixed inset-y-0 left-0 z-50 w-20 lg:w-80 border-r border-border bg-background/80 backdrop-blur-xl transition-all duration-300 flex flex-col py-8 px-4 lg:px-8">
+    <aside
+        class="fixed inset-y-0 left-0 z-50 w-20 lg:w-80 border-r border-border bg-background/80 backdrop-blur-xl transition-all duration-300 flex flex-col py-8 px-4 lg:px-8">
         <div class="flex flex-col items-center lg:items-start mb-12">
-            <div class="relative w-12 h-12 lg:w-24 lg:h-24 rounded-full overflow-hidden ring-2 ring-border mb-4 group cursor-pointer transition-transform hover:scale-105">
-                <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Khushpreet&backgroundColor=e5e7eb" alt="Profile" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <i data-lucide="camera" class="text-white w-4 h-4 lg:w-6 lg:h-6"></i>
+            <div
+                class="profile-avatar w-12 h-12 lg:w-24 lg:h-24 rounded-full overflow-hidden ring-2 ring-border mb-4 group cursor-pointer">
+                <img src="pic.jpg" alt="Khushpreet Singh Profile" class="w-full h-full object-cover" />
+                <div
+                    class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <i data-lucide="camera" class="text-white w-4 h-4 lg:w-6 lg:h-6"></i>
                 </div>
             </div>
             <div class="hidden lg:block">
@@ -271,28 +383,33 @@
                 <p class="text-xs text-muted-foreground font-mono" contenteditable="true">AI Engineer</p>
             </div>
         </div>
-        
+
         <nav class="flex-1 w-full space-y-2 flex flex-col items-center lg:items-start">
-            <a href="#home" class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
+            <a href="#home"
+                class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
                 <i data-lucide="home" class="w-5 h-5 group-hover:text-accent transition-colors"></i>
                 <span class="hidden lg:block font-medium text-sm">Home Base</span>
             </a>
-            <a href="#work" class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
+            <a href="#work"
+                class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
                 <i data-lucide="layers" class="w-5 h-5 group-hover:text-accent transition-colors"></i>
                 <span class="hidden lg:block font-medium text-sm">Selected Work</span>
             </a>
-            <a href="#experience-section" class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
+            <a href="#experience-section"
+                class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
                 <i data-lucide="briefcase" class="w-5 h-5 group-hover:text-accent transition-colors"></i>
                 <span class="hidden lg:block font-medium text-sm">Experience</span>
             </a>
-             <a href="#about" class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
+            <a href="#about"
+                class="w-full group flex items-center gap-4 p-3 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
                 <i data-lucide="cpu" class="w-5 h-5 group-hover:text-accent transition-colors"></i>
                 <span class="hidden lg:block font-medium text-sm">Tech Stack</span>
             </a>
         </nav>
 
         <div class="w-full flex flex-col gap-4 items-center lg:items-start pt-8 border-t border-border">
-             <button id="theme-toggle" class="flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <button id="theme-toggle"
+                class="flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 <div class="p-2 rounded-full bg-muted group-hover:bg-accent/10">
                     <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
                     <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
@@ -300,34 +417,46 @@
                 <span class="hidden lg:block">Toggle Theme</span>
             </button>
             <div class="hidden lg:flex gap-4 mt-2">
-                <a href="https://github.com/Kalrakhush" class="text-muted-foreground hover:text-accent transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
-                <a href="https://linkedin.com/in/khushpreets016" class="text-muted-foreground hover:text-accent transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                <a href="https://github.com/Kalrakhush"
+                    class="text-muted-foreground hover:text-accent transition-colors"><i data-lucide="github"
+                        class="w-4 h-4"></i></a>
+                <a href="https://linkedin.com/in/khushpreets016"
+                    class="text-muted-foreground hover:text-accent transition-colors"><i data-lucide="linkedin"
+                        class="w-4 h-4"></i></a>
             </div>
         </div>
     </aside>
 
     <!-- MAIN CONTENT -->
-    <main class="pl-20 lg:pl-96 pr-4 sm:pr-8 py-12 lg:py-20 max-w-[1600px] mx-auto relative z-10 min-h-screen flex flex-col justify-center">
+    <main
+        class="pl-20 lg:pl-96 pr-4 sm:pr-8 py-12 lg:py-20 max-w-[1600px] mx-auto relative z-10 min-h-screen flex flex-col justify-center">
 
         <!-- HERO -->
         <section id="home" class="mb-32">
             <div class="space-y-8 max-w-3xl lg:pl-8">
                 <div class="flex items-center gap-3">
                     <div class="status-dot"></div>
-                    <span class="text-xs font-mono font-medium text-muted-foreground uppercase tracking-wider" contenteditable="true">Available for Hire</span>
+                    <span class="text-xs font-mono font-medium text-muted-foreground uppercase tracking-wider"
+                        contenteditable="true">Available for Hire</span>
                 </div>
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]" contenteditable="true">
-                    AI <br/>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
+                    contenteditable="true">
+                    AI <br />
                     <span class="text-muted-foreground">Engineer.</span>
                 </h1>
                 <p class="text-lg text-muted-foreground max-w-md leading-relaxed" contenteditable="true">
-                    I build intelligent systems. Specializing in <span class="text-foreground font-medium">LLM Orchestration</span>, <span class="text-foreground font-medium">RAG Pipelines</span>, and scalable <span class="text-foreground font-medium">ML Infrastructure</span>.
+                    I build intelligent systems. Specializing in <span class="text-foreground font-medium">LLM
+                        Orchestration</span>, <span class="text-foreground font-medium">RAG Pipelines</span>, and
+                    scalable <span class="text-foreground font-medium">ML Infrastructure</span>.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#work" class="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium text-sm hover:opacity-90 transition-opacity flex items-center">
-                        View Projects <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"></i>
+                    <a href="#work"
+                        class="group bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium text-sm hover:opacity-90 transition-opacity flex items-center">
+                        View Projects <i data-lucide="arrow-right"
+                            class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"></i>
                     </a>
-                    <a href="Khushpreet Resume-up.pdf" target="_blank" class="bg-muted text-foreground px-6 py-3 rounded-full font-medium text-sm hover:bg-muted/80 transition-colors border border-border">
+                    <a href="Khushpreet Resume-up.pdf" target="_blank"
+                        class="bg-muted text-foreground px-6 py-3 rounded-full font-medium text-sm hover:bg-muted/80 transition-colors border border-border">
                         Download CV
                     </a>
                 </div>
@@ -339,7 +468,8 @@
             <div class="flex justify-between items-end mb-8">
                 <div>
                     <h2 class="text-3xl font-bold tracking-tight" contenteditable="true">Selected Work</h2>
-                    <p class="text-muted-foreground mt-2" contenteditable="true">Production-grade AI systems & Research.</p>
+                    <p class="text-muted-foreground mt-2" contenteditable="true">Production-grade AI systems & Research.
+                    </p>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]" id="projects-grid">
@@ -365,12 +495,15 @@
                     </p>
                 </div>
                 <div class="flex flex-col gap-4 items-start md:items-end">
-                    <a href="mailto:khushpreets016@gmail.com" class="text-2xl font-mono hover:text-accent transition-colors border-b border-transparent hover:border-accent">
+                    <a href="mailto:khushpreets016@gmail.com"
+                        class="text-2xl font-mono hover:text-accent transition-colors border-b border-transparent hover:border-accent">
                         khushpreets016@gmail.com
                     </a>
                     <div class="flex gap-6 mt-2">
-                        <a href="https://linkedin.com/in/khushpreets016" class="text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
-                        <a href="https://github.com/Kalrakhush" class="text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
+                        <a href="https://linkedin.com/in/khushpreets016"
+                            class="text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
+                        <a href="https://github.com/Kalrakhush"
+                            class="text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -435,7 +568,7 @@
                     desc: "Published research on ensemble ML models achieving 88% accuracy in crop yield prediction and disease detection.",
                     tags: ["Scikit-Learn", "XGBoost", "Flask", "React"],
                     icon: "sprout",
-                    class: "", 
+                    class: "",
                     img: "images/agriguide.jpg",
                     gradient: "from-green-500 to-emerald-500",
                     details: `
@@ -454,7 +587,7 @@
                     desc: "Optimized sentiment analysis model reducing size by 50% while improving F1-score on neutral class classification.",
                     tags: ["HuggingFace", "PyTorch", "QLoRA", "PEFT"],
                     icon: "brain-circuit",
-                    class: "", 
+                    class: "",
                     img: "images/sentiment.jpg",
                     gradient: "from-purple-500 to-pink-500",
                     details: `
@@ -583,7 +716,7 @@
         function renderPortfolio() {
             const projectGrid = document.getElementById('projects-grid');
             const expGrid = document.getElementById('experience-grid');
-            
+
             if (!projectGrid) {
                 console.error('projects-grid element not found');
                 return;
@@ -592,10 +725,10 @@
                 console.error('experience-grid element not found');
                 return;
             }
-            
-            projectGrid.innerHTML = ''; 
+
+            projectGrid.innerHTML = '';
             expGrid.innerHTML = '';
-            
+
             // Render Projects
             if (portfolioData && portfolioData.projects) {
                 portfolioData.projects.forEach(p => {
@@ -603,7 +736,7 @@
                     card.className = `bento-card p-8 flex flex-col justify-between group bg-gradient-to-br from-card to-muted/50 ${p.class}`;
                     card.style.opacity = '0'; // Start hidden for GSAP animation
                     card.onclick = () => openDetail(p.id, 'project');
-                    
+
                     card.innerHTML = `
                         <div class="relative z-10">
                             <div class="flex justify-between items-start mb-6">
@@ -649,7 +782,7 @@
                     card.className = "bento-card p-6 flex flex-col justify-between group hover:border-accent transition-all cursor-pointer";
                     card.style.opacity = '0'; // Start hidden for GSAP animation
                     card.onclick = () => openDetail(e.id, 'experience');
-                    
+
                     card.innerHTML = `
                         <div>
                             <div class="flex items-center justify-between mb-4">
@@ -684,14 +817,14 @@
                 data = portfolioData.projects.find(p => p.id === id);
             } else {
                 data = portfolioData.experience.find(e => e.id === id);
-                if(data) data.title = `${data.role} @ ${data.company}`;
+                if (data) data.title = `${data.role} @ ${data.company}`;
             }
 
-            if(!data) return;
+            if (!data) return;
 
             const content = document.getElementById('detail-content');
             const fallbackGradient = `bg-gradient-to-br ${data.gradient}`;
-            
+
             content.innerHTML = `
                 <div class="back-btn" onclick="closeDetail()">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Overview
@@ -738,28 +871,28 @@
         // =========================================
         // 4. INIT
         // =========================================
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             renderPortfolio();
             lucide.createIcons();
-            
+
             // GSAP Entrance - wait for cards to be rendered
             setTimeout(() => {
                 const cards = document.querySelectorAll('.bento-card');
                 if (cards.length > 0 && typeof gsap !== 'undefined') {
                     // Set initial state for cards
                     gsap.set(".bento-card", { y: 50, opacity: 0 });
-                    
+
                     const tl = gsap.timeline();
                     tl.from("aside", { x: -50, opacity: 0, duration: 1, ease: "power3.out" })
-                      .from("h1", { y: 50, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.5")
-                      .to(".bento-card", { 
-                          y: 0, 
-                          opacity: 1, 
-                          duration: 0.8, 
-                          stagger: 0.1, 
-                          ease: "power2.out"
-                      }, "-=0.5");
+                        .from("h1", { y: 50, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+                        .to(".bento-card", {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.8,
+                            stagger: 0.1,
+                            ease: "power2.out"
+                        }, "-=0.5");
                 } else {
                     // Fallback: ensure cards are visible if GSAP fails or cards don't exist
                     cards.forEach(card => {
@@ -788,14 +921,14 @@
             renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             container.appendChild(renderer.domElement);
-            
+
             const geometry = new THREE.BufferGeometry();
             const count = 800;
             const posArray = new Float32Array(count * 3);
-            for(let i = 0; i < count * 3; i += 3) {
+            for (let i = 0; i < count * 3; i += 3) {
                 posArray[i] = (Math.random() - 0.5) * 40;
-                posArray[i+1] = (Math.random() - 0.5) * 40;
-                posArray[i+2] = (Math.random() - 0.5) * 20;
+                posArray[i + 1] = (Math.random() - 0.5) * 40;
+                posArray[i + 2] = (Math.random() - 0.5) * 20;
             }
             geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             const material = new THREE.PointsMaterial({ size: 0.05, color: 0x000000, transparent: true, opacity: 0.4 });
@@ -824,14 +957,14 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             });
         };
-        
+
         function updateThreeJSColor() {
             if (!particles) return;
             const isDark = document.documentElement.classList.contains('dark');
             particles.material.color.setHex(isDark ? 0xffffff : 0x000000);
             particles.material.opacity = isDark ? 0.3 : 0.4;
         };
-        
+
         initThreeJS();
 
         // Smooth Scroll
@@ -844,4 +977,5 @@
 
     </script>
 </body>
+
 </html>
